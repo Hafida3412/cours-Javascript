@@ -343,5 +343,114 @@ functiongetResultatAdditionDe2Nombres(nombre1, opération, nombre2){
     }
 }
 
+console.log(`7 + 2 = ${getResultatCalculEntre2Nombres(7, "addition", 2)}`);
+console.log(`6 - 1 = ${getResultatCalculEntre2Nombres(6, "soustraction", 1)}`);
+console.log(`3 * 4 = ${getResultatCalculEntre2Nombres(3, "multiplication", 4)}`);
+console.log(`10 / 2 = ${getResultatCalculEntre2Nombres(10, "division", 2)}`);
+console.log(`2 ** 3 = ${getResultatCalculEntre2Nombres(2, "puissance", 3)}`);
+
+//Résultat: 7 + 2 = 9; 6 - 1 = 5; 3 * 4 = 12; 10 / 2 = 5;
+//Opération "puissance" non gérée 2 ** 3 = null
+
+
+//  LES TABLEAUX
+
+//-> Les tableaux indexés:
+/* - il regroupe des éléments,
+   - c'est une liste ordonnée d'éléments
+   - chaqe élément a pour emplacement un index
+   - la longueur length est le nb d'éléments qu'il contient
+ATTENTION: * le 1er élt a l'index 0
+           * le dernier a l'index(n-1)
+*/
+
+
+//->utilités:
+/*   - permet de regrouper des élts ensembles dans le but par ex:
+        *boucler sur le tableau(svt grâce à une boucle FOR)
+        *et appliquer une logique commune pr chaq élt
+     - il est extensible pouvant contenir 0 à n élément (pratique qd on ne sait pas à l'avance le nb d'élt)
+     - chaque élt peut être de n'importe quel type(on peut y stocker des nb, des tableaux, des fonctions etc...)
+*/
+
+
+//->les bases de leur utilisation:
+
+//-> créer un tableau indexé vide:
+const tableauVide = [];
+
+//-> créer un tableau indexé qui contient des valeurs fournies:
+const tabNums = [11, 22, 33, 44, 55, 66, 77];
+
+
+//-> ajouter un élément à la fin du tableau(en dernière position):
+tableauVide.push(2);
+tableauVide.push(3);
+tableauVide.push(7);
+console.log("tableauVide[1]=", tableauVide[1]);
+//résultat: tableauVide = ->(3) [2, 3, 7]
+
+//->récupérer un élt par son index, son emplacement qui commence par 0:
+console.log("tableauVide[1]=" , tableauVide[1]);
+//résultat: tableauVide[1] = 3
+
+
+//->modifier la valeur d'un élément à un certain index:
+tableauVide[2] = "abc";
+console.log("tableauVide =" , tableauVide);
+//résultat: tableauVide = ->(3)[2, 3, `abc`]
+
+
+//->boucler sur un tableau et appliquer une valer logique pour chaque élt:
+for(let i = 0; i < tableauVide.length; i++){
+    //récupération de l'élt à l'index i
+    const elementTableauVide = tableauVide[i];
+    //log de cet élt
+    console.log("tableauVide[" + i + "] = ", elementTableauVide);
+}
+
+//résultat: tableauVide[0] = 2; tableauVide[1] = 3;tableauVide[2] = abc;
+
+
+//Quelques méthodes utiles
+/* Une méthode est une fonction qui appartient à une classe
+Syntaxe: pour appeler une méthode "uneMethode" sur un tableau indexé "unTableau", on écrit:*/
+    unTableau.uneMethode()
+
+ //-> méthode .push (= ajouter un élt à la fin du tableau)
+ tableauVide.puch(2);
+ 
+ //-> méthode .join(=séparateur entre chaque élt _|_)
+ console.log(`tabNums.join("_|_) = ${tabNums.join("_|_")}`);
+ //résultat: tabNums.join("_|_")= 11_|_22_|_33_|_44_|_55_|_66_|_77
+
+
+//->méthode .includes(elementRecherche): renvoie true or false si l'élt est dans le tableau ou pas
+console.log(
+    `L'élément ${77} ${tabNums.includes(77)? "est": "n'est pas"} présent dans le tableau [${tabNums.join(", ")}]`);
+
+console.log(
+    `L'élément ${42} ${tabNums.includes(42)? "est": "n'est pas"} présent dans le tableau [${tabNums.join(", ")}]`);
+//résultat: l'élément 77 est présent dans le tableau [11........77]
+//          l'élément 42 n'est pas présent dans le tableau[11.......77]
+
+//-> méthode .indexOf(elementRecherche): renvoie l'index de l'elt recherché(entre 0 et length-1 si trouvé, -1 sinon)
+
+const indexOf77 = tabNums.indexOf(77);
+if(indexOf77 != -1){
+    console.log(`l'élément ${77} est à l'index ${indexOf77} dans le tableau [${tabNums.join(", ")}]`);
+}else{
+    console.log(`l'élément ${77} n'est pas présent dans le tableau [${tabNumsjoin(", ")}]`)
+}
+//résultat: l'élt 77 est à l'index 6 dans le tableau [11........77]
+
+//->méthode .slice(indexDebutEltInclus, indexFinEltExclu): renvoir une copie d'un morceau de tableau:
+const morceau = tabNums.slice(2, 4);
+console.log(`morceau(tabNums.slice(2, 4)) = [$(morceau.join(", "))]`);
+//résultat: morceau(tabNums.slice(2, 4)) = [33, 44]
+
+
+//LES TABLEAUX ASSOCIATIFS
+
 
 
