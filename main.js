@@ -451,6 +451,92 @@ console.log(`morceau(tabNums.slice(2, 4)) = [$(morceau.join(", "))]`);
 
 
 //LES TABLEAUX ASSOCIATIFS
+/* Un tableau associatif regroupe des éléments sous la forme de paires (ou duos) clef/valeur.
+Le tabl assoc est comparé à un dictionnaire. Les clefs sont les mots et chaque mot pointe vers une
+valeur qui est à la définition de ce mot
 
+Utilités:
+- regrouper des données de façon structurée dans le but de construire un objet  qu'on pourra facilement
+manipuler
+- il est extensible, pouvant contenir de 0 à n paires clef/valeur.
+- chaque valeur peut être de n'importe quel type(nb, tableaux, fonctions...)
 
+Les bases de leur utilisation:
 
+-> Création d'un tableau associatif vide (sans aucune paire clef/valeur)*/
+let tabAssocVide = {};
+
+//-> Ajout d'une paire clef/valeur (ex: Bryan et 27 ans)
+tabAssocVide.prenom = "Bryan";
+tabAssocVide.age = 27;
+console.log("tabAssocVide = ", tabAssocVide);
+//résultat: tabAssocVide = ->{prenom: 'Bryan', age = 27}
+
+//->Accéder à une valeur (ici l'âge passe à 28)
+tabAssocVide.age= 28;
+console.log("tabAssocVide = ", tabAssocVide);
+//résultat: tabAssocVide = ->{prenom: 'Bryan', age = 28}
+
+//initialisation d'un tableau associatif plus riche
+//affectation à la variable pikachu, stockant ses infos et ses attaques
+//(données sur Pikachu récupérées d'Internet)
+let Pikachu ={
+    id : 25,            //number (entier)              : identifiant unique
+    name: "Pikachu"     //string                       : nom du Pokemon
+    weightKg: 6.0,      //number(decimal)              : poids
+    hpMax: 80,          //number(entier)               : points de vie max
+    attacks: [          //Array(tableau indexé)        : liste des attaques
+      {
+        name: "Vive-Attaque",  //string                : nom de l'attaque
+        damages: 10,           //number(entier)        : puissance de l'attaque
+      },
+      {
+        name: "Boule Elek",
+        damages: 20,
+      },
+    ],
+};
+
+console.log("pikachu = ", pikachu);
+//résultat: pikachu= ->{id: 25, name: 'Pikachu', weightKg: 6, hpMax: 80, attacks: Array(2)}
+/* pikachu= ->{id: 25, name: 'Pikachu', weightKg: 6, hpMax: 80, attacks: Array(2)}
+attacks: Array(2)
+0: {name: 'Vive-Attaque', damages: 10}
+1: {name: 'Boule Elek', damages: 20}
+   length: 2
+   [[Prototype]]: Array(0)
+   hpMax: 80
+   id: 25
+   name: "Pikachu"
+   weightKg: 6
+   [[Prototype]]: Object
+   */
+
+//-> Exemples d'application
+/*-> Tableaux indexés et associatifs avec Pikachu
+exercice: Pikachu possède 2 attaques:
+"Vive-Attaque" (puissance 10)
+"Boule Elek" (puissance 20)
+Le code devra s'adapter à d'autres Pokemon (tableaux assoiatifs) qui suivront la même structure
+Note: pour faire une tabulation/un retrait dans la console,écrire le caractère: "\t"*/
+
+//création d'une fonction, ainsi il sera simple d'appeler cette logique avec d'autres Pokemon
+function listerAttaquesPokemon(pokemon){
+    //écrire de la première ligne
+    console.log(`${pokemon.name}possède ${pokemon.attacks.length} attaques :`);
+
+    //pour chaque attaque(dans le tableau  indexé pokemon.attacks)
+    for (let i = 0; i < pokemon.attacks.length; i++){
+        //récupération du tableau associatif de l'attaque(le i-ème élément)
+        const attaque = pokemon.attacks[i];
+
+        //écriture d'une ligne d'attaque
+        console.log(`\t" ${attaque.name}" (puissance ${attaque.damages})`);
+    }
+}
+//appel de la fonction listerAttaquesPokemon en lui passant comme argument/paramètre
+listerAttaquesPokemon(pikachu);
+
+//résultat: Pikachu possède 2 attaques:
+// "Vive-Attaque" (puissance 10)
+// "Boule Elek" (puissance 20)
